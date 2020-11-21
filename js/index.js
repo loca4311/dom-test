@@ -23,6 +23,8 @@ setInterval( () => clock.innerText = new Date().toLocaleTimeString(), 1000);
 //   }
 // }, 1000);
 
+// PRODUCT LIST
+
 const productsJson = 
 `[
   {"name": "iPhoneX", "price": 1000},
@@ -36,6 +38,17 @@ for (const product of products) {
     `<div>${product.name}: ${product.price}</div>`;
 }
 
-// 00:44:58/01:58:49
+// ADD PRODUCT
+function addProduct(ev) {
+  ev.preventDefault();
+  const name = document.querySelector('.product-name').value;
+  const price = document.querySelector('.product-price').value;
+  if (name === '' || price === '') return;
+  productsContainer.innerHTML += 
+    `<div>${name}: ${price}</div>`;
+}
+
+document.querySelector('.btn-add').addEventListener('click', addProduct);
+
 
 
